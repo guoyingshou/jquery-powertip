@@ -67,6 +67,14 @@
 			width: 400px;
 			padding: 40px;
 		}
+
+		#api-examples div {
+			background-color: #EEE;
+			text-align: center;
+			width: 400px;
+			padding: 40px;
+		}
+
 		#powerTip a {
 			color: #00F;
 		}
@@ -103,6 +111,12 @@
 			The PowerTip for this box will appear on the right and you will be able to interact with its content.
 		</div>
 	</div>
+	<div id="api-examples">
+		<h2>API examples</h2>
+		<div>
+			The PowerTip for this box will have a button you can click to close it.
+		</div>
+	</div>
 	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js"></script>
 	<script type="text/javascript" src="jquery.powertip.js"></script>
 	<script type="text/javascript">
@@ -127,6 +141,20 @@
 				'<p><code>{ placement: \'e\', mouseOnToPopup: true }</code></p>'
 			].join('\n')));
 			$('#mouseon-examples div').powerTip({
+				placement: 'e',
+				mouseOnToPopup: true
+			});
+
+			// api examples
+			var tip = $([
+				'<p><b>Here is some content</b></p>',
+				'<p><input type="button" value="Close this tip" /></p>'
+			].join('\n'))
+			tip.find('input').on('click', function() {
+				$.powerTip.close();
+			});
+			$('#api-examples div').data('powertipjq', tip);
+			$('#api-examples div').powerTip({
 				placement: 'e',
 				mouseOnToPopup: true
 			});

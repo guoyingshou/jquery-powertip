@@ -98,6 +98,14 @@ $('#element').data('powertiptarget', 'myToolTip');
 | `intentPollInterval` | `100` | Number | Hover intent polling interval in milliseconds. |
 | `intentSensitivity` | `7` | Number | Hover intent sensitivity. The tooltip will not open unless the number of pixels the mouse has moved within the `intentPollInterval` is less than this value. These default values mean that if the mouse cursor has moved 7 or more pixels in 100 milliseconds the tooltip will not open. |
 
+## API
+
+The plugin exposes a couple global methods through the `$.powerTip` object that you can call directly.
+
+| Name | Description |
+| ----- | ----- |
+| `close()` | Close any open tooltips. |
+
 ## Similar Projects
 There are (countless) other JavaScript tooltip projects that are worth taking a look at and may better suit your needs. Here are some of my favorites.
 

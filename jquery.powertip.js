@@ -214,6 +214,11 @@
 			tipElement.data('followMouse', options.followMouse);
 			tipElement.data('mouseOnToPopup', options.mouseOnToPopup);
 
+			// hook close event for triggering from the API
+			$window.on('closePowerTip', function() {
+				hideTip(session.activeHover);
+			});
+
 			// fadein
 			tipElement.fadeIn(options.fadeInTime, function() {
 				// start desync polling
@@ -230,6 +235,7 @@
 		 */
 		function hideTip(element) {
 			element.data('hasActiveHover', false);
+			$window.off('closePowerTip');
 			tipElement.fadeOut(options.fadeOutTime, function() {
 				session.activeHover = null;
 				session.isPopOpen = false;
@@ -430,6 +436,15 @@
 		placement: 'n',
 		offset: 10,
 		mouseOnToPopup: false
+	};
+
+	/**
+	 * Public API
+	 */
+	$.powerTip = {
+		close: function() {
+			$window.triggerHandler('closePowerTip')
+		}
 	};
 
 	var onMoveHooked = false;
